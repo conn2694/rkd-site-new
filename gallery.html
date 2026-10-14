@@ -31,6 +31,31 @@ body {
   padding: 10px;
 }
 
+/* Burger menu button: transparent so it blends into the logo bar */
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-left: auto; /* pushes the button to the far end of the bar */
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+}
+
+.menu-toggle svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus-visible {
+  background: rgba(0, 0, 0, 0.1);
+}
+
 .links {
   float: left;
   width: 100%;
@@ -191,18 +216,14 @@ body {
       <h1>Header</h1>
       </div>
     </div>
-    <div class="row">
-      <div class="col-9">
-        <div class="row mb-2">
-          <div class="logo">
-          <h5>Logo   Illustrator</h5>
-        </div>
+    <div class="row mb-2">
+      <div class="logo d-flex align-items-center">
+        <h5 class="mb-0">Logo   Illustrator</h5>
+        <button class="menu-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+        </button>
       </div>
-      </div>
-      <div class="col">
-      <div class="row">
-
-      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Burg</button>
+    </div>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" style="background-color: #cea4d8;">
   <div class="offcanvas-header">
@@ -214,10 +235,6 @@ body {
       <a href="commissions.html">Commissions<br></a>
       <a href="gallery.html">Gallery<br></a>
     </div>
-    </div>
-    </div>
-  </div>
-
     </div>
     <div class="row mb-2">
       <div class="art">
