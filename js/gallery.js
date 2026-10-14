@@ -65,6 +65,29 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === "ArrowRight") show(current + 1);
   });
 
+  // Swipe left / right on touch screens
+  const SWIPE_MIN = 50; // pixels a finger must travel to count as a swipe
+  let touchStartX = null;
+  let touchStartY = null;
+
+  modalEl.addEventListener("touchstart", function (e) {
+    if (e.touches.length !== 1) { touchStartX = null; return; }
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  modalEl.addEventListener("touchend", function (e) {
+    if (touchStartX === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    touchStartX = null;
+
+    // Ignore short or mostly vertical movements
+    if (Math.abs(dx) < SWIPE_MIN || Math.abs(dx) < Math.abs(dy)) return;
+    if (dx < 0) show(current + 1); // swiped left: next
+    else show(current - 1);        // swiped right: previous
+  });
+
   // Clicking the dimmed area around the image closes it
   modalEl.querySelector(".modal-body").addEventListener("click", function (e) {
     if (e.target === this) modal.hide();
