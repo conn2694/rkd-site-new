@@ -1,0 +1,315 @@
+/* ---------------------------------------------------------------
+   Shared styles for every page of the site.
+   Page-specific styles (e.g. the gallery grid and lightbox) stay in
+   a <style> block on that page.
+   --------------------------------------------------------------- */
+
+/* ---------- Colors and fonts (change these to restyle the whole site) ---------- */
+
+:root {
+  --pink: #ff4f9a;            /* active button, mobile top bar */
+  --pink-light: #ff8cc0;
+  --title-pink: #ec3f8c;      /* handwritten box titles */
+  --title-bar: #ffc2dd;       /* fades to white behind box titles */
+  --text: #3d3d3d;
+  --muted: #6e6e6e;           /* footer text */
+  --box-bg: #ffffff;
+  --radius: 10px;
+  --font-body: "Nunito", system-ui, sans-serif;
+  --font-title: "Gochi Hand", cursive;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text);
+  /* Lavender at the top fading to light blue at the bottom */
+  background: linear-gradient(180deg, #e8c8ef 0%, #d3d3f4 50%, #a9dbf7 100%) fixed;
+}
+
+a {
+  color: inherit;
+}
+
+/* ---------- Boxes ---------- */
+
+/* White rounded panel used for every section */
+.box {
+  background: var(--box-bg);
+  border-radius: var(--radius);
+  padding: 0 1rem 1rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+/* Handwritten pink title on a pink bar that fades out to the right */
+.box-title {
+  font-family: var(--font-title);
+  font-size: 2.1rem;
+  line-height: 1.2;
+  color: var(--title-pink);
+  background: linear-gradient(90deg, var(--title-bar) 0%, rgba(255, 194, 221, 0) 100%);
+  margin: 0 -1rem 0.75rem;
+  padding: 0.1rem 1rem;
+}
+
+/* In the main column the title bar is indented, as in the mockup */
+.box-main {
+  padding: 1.1rem 2rem 1.5rem;
+}
+
+.box-main .box-title {
+  margin: 0 0 1rem;
+  font-size: 2.6rem;
+}
+
+/* Empty box (e.g. Bonus) keeps some height so it still reads as a panel */
+.box-empty {
+  min-height: 11rem;
+}
+
+/* ---------- Banner and logo ---------- */
+
+.banner-wrap {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+/* Placeholder for the banner artwork */
+.banner {
+  height: 230px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: linear-gradient(110deg, #ffd3e8 0%, #ead3ff 50%, #cfe7ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a58bc2;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+/* Logo placeholder: chunky pink text with a white outline */
+.site-logo {
+  font-weight: 900;
+  font-size: 3.2rem;
+  line-height: 1;
+  color: var(--pink-light);
+  text-shadow:
+    -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff,
+    0 4px 10px rgba(120, 60, 140, 0.35);
+  white-space: nowrap;
+}
+
+.banner-wrap .site-logo {
+  position: absolute;
+  left: -0.75rem;
+  bottom: -0.6rem;
+  transform: rotate(-4deg);
+}
+
+/* Gray strip under the banner with the taglines */
+.tagline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 2rem;
+  padding: 0.2rem 1rem;
+  border-radius: 0 0 6px 6px;
+  background: linear-gradient(180deg, #a3a3a3 0%, #767676 100%);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ---------- Menu buttons ---------- */
+
+/* Glossy gray pill buttons */
+.nav-btn {
+  display: block;
+  margin-bottom: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #fbfbfb 0%, #e3e3e3 50%, #c9c9c9 100%);
+  box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0, 0, 0, 0.18);
+  color: #4a4a4a;
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.nav-btn:hover,
+.nav-btn:focus-visible {
+  color: var(--pink);
+}
+
+/* The page you're on */
+.nav-btn.active {
+  background: linear-gradient(180deg, var(--pink-light) 0%, var(--pink) 100%);
+  color: #fff;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background: var(--box-bg);
+  border: 3px solid #8f8f8f;
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem 0.75rem;
+  margin-bottom: 1.5rem;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.site-footer h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.footer-links {
+  columns: 2;
+  column-gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.footer-links a,
+.copyright {
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--pink);
+}
+
+/* Gray circles for the social media links */
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #8f8f8f;
+  box-shadow: inset 0 0 0 3px #d9d9d9;
+  color: #fff;
+  font-weight: 900;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  background: var(--pink);
+  color: #fff;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 0.9rem;
+  margin: 1rem 0 0;
+}
+
+/* ---------- Mobile ---------- */
+
+/* Pink bar across the top with the logo, title and menu button */
+.mobile-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.75rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, var(--pink-light) 0%, var(--pink) 100%);
+  color: #fff;
+}
+
+.mobile-bar .site-logo {
+  font-size: 1.8rem;
+  text-shadow:
+    -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+}
+
+.mobile-bar-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+/* Burger menu button: transparent so it blends into the pink bar */
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: auto; /* pushes the button to the far end of the bar */
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+}
+
+.menu-toggle svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus-visible {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 767.98px) {
+  .banner {
+    height: 110px;
+    font-size: 0.85rem;
+  }
+
+  .tagline {
+    gap: 0.1rem 1rem;
+    font-size: 0.7rem;
+  }
+
+  .box {
+    margin-bottom: 0.75rem;
+  }
+
+  .box-main {
+    padding: 0.75rem 1rem 1rem;
+  }
+
+  .box-main .box-title {
+    font-size: 1.9rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .welcome p {
+    font-size: 0.9rem;
+  }
+
+  .site-footer {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .site-footer .socials {
+    justify-content: center;
+  }
+}
+
+/* Slide-out menu on mobile */
+.offcanvas .offcanvas-title {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  color: var(--title-pink);
+}
