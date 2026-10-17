@@ -5,8 +5,8 @@
 // ---------------------------------------------------------------
 // <![CDATA[
 var colours=new Array('#ff99cc', '#ffcc00', '#99ccff', '#ffffff', '#FF6699', '#cc99ff', '#0099ff'); // colours of the hearts
-var minisize=15; // smallest size of hearts in pixels
-var maxisize=20; // biggest size of hearts in pixels
+var minisize=10; // smallest size of hearts in pixels
+var maxisize=15; // biggest size of hearts in pixels
 var hearts=66; // maximum number of hearts on screen
 var over_or_under="over"; // set to "over" for hearts to always be on top, or "under" to allow them to float behind other objects
  
