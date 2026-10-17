@@ -63,6 +63,35 @@ a {
   font-size: 2.6rem;
 }
 
+/* "Bubbly" title style: chunky rounded letters with a pink gradient
+   and a soft white outline. Use as:
+   <h2 class="box-title title-bubble"><span>Title</span></h2> */
+.title-bubble {
+  font-family: var(--font-body);
+  font-weight: 900;
+  font-size: 1.7rem;
+  letter-spacing: 0.01em;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.box-main .title-bubble {
+  font-size: 2.3rem;
+}
+
+.title-bubble span {
+  /* Deeper pink at the top, lighter toward the bottom */
+  background: linear-gradient(180deg, #ff4a85 0%, #ff4a85 40%, #ff8db4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* White outline plus a faint white glow around the letters */
+  filter:
+    drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff)
+    drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
+    drop-shadow(0 0 3px rgba(255, 255, 255, 0.9));
+}
+
 /* Empty box (e.g. Bonus) keeps some height so it still reads as a panel */
 .box-empty {
   min-height: 11rem;
