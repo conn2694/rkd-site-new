@@ -17,11 +17,6 @@
   --radius: 10px;
   --font-body: "Nunito", system-ui, sans-serif;
   --font-title: "Gochi Hand", cursive;
-  /* Logo gradient, left to right (the stop positions are in each page's
-     <linearGradient id="logo-gradient">) */
-  --logo-pink: #FF94B0;
-  --logo-purple: #C2A7EC;
-  --logo-blue: #65CBFF;
 }
 
 body {
@@ -123,7 +118,8 @@ a {
 
 /* Logo: images/logo.png (black and white) with the gradient layered on
    top. "Screen" blending turns the black parts into the gradient and
-   leaves the white parts white. */
+   leaves the white parts white. The gradient colors are set in
+   js/logo-gradient.js. */
 .site-logo {
   display: block;
   height: auto;
@@ -133,10 +129,6 @@ a {
 .logo-tint {
   mix-blend-mode: screen;
 }
-
-.logo-stop-pink   { stop-color: var(--logo-pink); }
-.logo-stop-purple { stop-color: var(--logo-purple); }
-.logo-stop-blue   { stop-color: var(--logo-blue); }
 
 .banner-wrap .site-logo {
   position: absolute;
