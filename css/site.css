@@ -85,11 +85,10 @@ a {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* White outline plus a faint white glow around the letters */
+  /* Solid white outline around the letters (no blur or glow) */
   filter:
     drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff)
-    drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
-    drop-shadow(0 0 3px rgba(255, 255, 255, 0.9));
+    drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff);
 }
 
 /* Empty box (e.g. Bonus) keeps some height so it still reads as a panel */
@@ -124,8 +123,7 @@ a {
   line-height: 1;
   color: var(--pink-light);
   text-shadow:
-    -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff,
-    0 4px 10px rgba(120, 60, 140, 0.35);
+    -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff;
   white-space: nowrap;
 }
 
@@ -150,6 +148,40 @@ a {
   font-weight: 600;
 }
 
+/* Scrolling ticker version of the tagline (set up by js/ticker.js) */
+.tagline.is-ticker {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.tagline-track {
+  display: flex;
+  width: max-content;
+  animation: tagline-scroll 30s linear infinite;
+}
+
+.tagline-group {
+  display: flex;
+  flex-shrink: 0;
+  --tagline-space: 200px; /* space between the phrases */
+  gap: var(--tagline-space);
+  padding-right: var(--tagline-space); /* same as the gap, so the loop's seam is invisible */
+}
+
+@keyframes tagline-scroll {
+  to { transform: translateX(-50%); }
+}
+
+/* Respect the "reduce motion" accessibility setting */
+@media (prefers-reduced-motion: reduce) {
+  .tagline-track {
+    animation: none;
+  }
+}
+
 /* ---------- Menu buttons ---------- */
 
 /* Glossy gray pill buttons */
@@ -159,7 +191,7 @@ a {
   padding: 0.2rem 0.5rem;
   border-radius: 6px;
   background: linear-gradient(180deg, #fbfbfb 0%, #e3e3e3 50%, #c9c9c9 100%);
-  box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0, 0, 0, 0.18);
+  box-shadow: inset 0 1px 0 #fff; /* shiny top edge */
   color: #4a4a4a;
   font-weight: 800;
   font-size: 1.1rem;
