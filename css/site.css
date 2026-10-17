@@ -17,6 +17,11 @@
   --radius: 10px;
   --font-body: "Nunito", system-ui, sans-serif;
   --font-title: "Gochi Hand", cursive;
+  /* Logo gradient, left to right (the stop positions are in each page's
+     <linearGradient id="logo-gradient">) */
+  --logo-pink: #FF94B0;
+  --logo-purple: #C2A7EC;
+  --logo-blue: #65CBFF;
 }
 
 body {
@@ -116,21 +121,28 @@ a {
   letter-spacing: 0.05em;
 }
 
-/* Logo placeholder: chunky pink text with a white outline */
+/* Logo: images/logo.png (black and white) with the gradient layered on
+   top. "Screen" blending turns the black parts into the gradient and
+   leaves the white parts white. */
 .site-logo {
-  font-weight: 900;
-  font-size: 3.2rem;
-  line-height: 1;
-  color: var(--pink-light);
-  text-shadow:
-    -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff;
-  white-space: nowrap;
+  display: block;
+  height: auto;
+  isolation: isolate;
 }
+
+.logo-tint {
+  mix-blend-mode: screen;
+}
+
+.logo-stop-pink   { stop-color: var(--logo-pink); }
+.logo-stop-purple { stop-color: var(--logo-purple); }
+.logo-stop-blue   { stop-color: var(--logo-blue); }
 
 .banner-wrap .site-logo {
   position: absolute;
-  left: -0.75rem;
+  left: -1rem;
   bottom: -0.6rem;
+  width: 250px;
   transform: rotate(-4deg);
 }
 
@@ -284,25 +296,30 @@ a {
 
 /* Pink bar across the top with the logo, title and menu button */
 .mobile-bar {
+  position: relative;
+  z-index: 2; /* keeps the overhanging logo above the banner */
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.4rem 0.75rem;
+  height: 3.5rem;
+  padding: 0 0.75rem;
   margin-bottom: 0.5rem;
-  background: linear-gradient(90deg, var(--pink-light) 0%, var(--pink) 100%);
+  /* Vivid pink at the bottom fading lighter toward the top */
+  background: linear-gradient(0deg, var(--pink) 0%, var(--pink-light) 100%);
   color: #fff;
 }
 
+/* Large logo on the left that hangs below the bar onto the banner */
 .mobile-bar .site-logo {
-  font-size: 1.8rem;
-  text-shadow:
-    -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+  position: absolute;
+  left: 0.4rem;
+  top: 0.3rem;
+  width: 150px;
 }
 
 .mobile-bar-title {
-  font-size: 1.4rem;
+  margin: 0 0 0 calc(150px + 0.75rem); /* starts just after the logo */
+  font-size: 1.5rem;
   font-weight: 800;
-  margin: 0;
 }
 
 /* Burger menu button: transparent so it blends into the pink bar */
@@ -310,8 +327,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   margin-left: auto; /* pushes the button to the far end of the bar */
   padding: 0;
   border: none;
@@ -320,9 +337,11 @@ a {
   color: inherit;
 }
 
+/* Big, chunky burger lines */
 .menu-toggle svg {
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  stroke-width: 3.5;
 }
 
 .menu-toggle:hover,

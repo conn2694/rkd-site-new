@@ -172,10 +172,29 @@
 
 <body>
 
+  <!-- Logo gradient: colors are set in css/site.css (--logo-pink, --logo-purple, --logo-blue) -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="logo-gradient">
+        <stop offset="0" class="logo-stop-pink"/>
+        <stop offset="0.3" class="logo-stop-pink"/>
+        <stop offset="0.58" class="logo-stop-purple"/>
+        <stop offset="0.9" class="logo-stop-blue"/>
+        <stop offset="1" class="logo-stop-blue"/>
+      </linearGradient>
+      <mask id="logo-mask" style="mask-type: alpha">
+        <image href="images/logo.png" width="1700" height="750"/>
+      </mask>
+    </defs>
+  </svg>
+
   <!-- Mobile layout -->
   <div class="d-md-none">
     <div class="mobile-bar">
-      <span class="site-logo">RK-d</span>
+      <svg class="site-logo" viewBox="0 0 1700 750" role="img" aria-label="RK-d">
+        <image href="images/logo.png" width="1700" height="750"/>
+        <rect class="logo-tint" width="1700" height="750" fill="url(#logo-gradient)" mask="url(#logo-mask)"/>
+      </svg>
       <h1 class="mobile-bar-title">Illustrator</h1>
       <button class="menu-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" aria-label="Open menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
@@ -242,7 +261,10 @@
         <span>Creating paintings and smiles</span>
         <span>Last Updated 2026</span>
       </div>
-      <div class="site-logo">RK-d</div>
+      <svg class="site-logo" viewBox="0 0 1700 750" role="img" aria-label="RK-d">
+        <image href="images/logo.png" width="1700" height="750"/>
+        <rect class="logo-tint" width="1700" height="750" fill="url(#logo-gradient)" mask="url(#logo-mask)"/>
+      </svg>
     </header>
 
     <div class="row g-3">
